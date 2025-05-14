@@ -6,6 +6,7 @@ function App() {
   const [chosenDrink, setChosenDrink] = useState(null);
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState('');
+  const [ageVerified, setAgeVerified] = useState(false);
 
   const spinDrink = async () => {
     setLoading(true);
@@ -43,6 +44,30 @@ function App() {
       setLoading(false);
     }
   };
+
+  if (!ageVerified) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-200 to-yellow-100 px-6 text-center">
+        <h1 className="text-4xl font-bold text-purple-800 mb-6 drop-shadow">🍹 Drinks Roulette</h1>
+        <p className="text-lg text-gray-800 mb-6">Hold up! 🚨 Before we serve your digital cocktail...</p>
+        <p className="text-md text-gray-700 italic mb-8">"Are you 21 or older? Or are you still trading juice boxes in the cafeteria?" 😏</p>
+        <div className="flex gap-4">
+          <button
+            onClick={() => setAgeVerified(true)}
+            className="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-full shadow-lg text-lg"
+          >
+            I'm 21+ 🍸
+          </button>
+          <button
+            onClick={() => alert("Come back when you're old enough. Here's a Capri Sun 🧃")}
+            className="bg-red-400 hover:bg-red-500 text-white font-bold px-6 py-3 rounded-full shadow-lg text-lg"
+          >
+            I'm Not 😬
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-fuchsia-100 via-violet-100 to-indigo-100 text-black px-4 sm:px-6 py-8 flex flex-col items-center font-sans">
